@@ -65,7 +65,7 @@ Not: Gemini API anahtarınızı Google AI Studio üzerinden ücretsiz olarak ala
    ```bash
    dotnet ef database update
    ```
-   4. Örnek Verileri Yükleyin:
+4. Örnek Verileri Yükleyin:
 Tablolar oluştuktan sonra, uygulamanın boş görünmemesi için SQL Server'ı (veya kullandığınız veritabanı aracını) açın ve aşağıdaki örnek verileri Notalar tablosuna çalıştırın (Execute):
  ```bash
    INSERT INTO Notalar (Ad, Aciklama) VALUES 
