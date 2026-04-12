@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ParfumAsistani")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5f51f36402b0bcab93f9e3b7e4c24666737c0b1c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a2a99fef5cfcdf5c49f14ec42a393db09199baf8")]
 [assembly: System.Reflection.AssemblyProductAttribute("ParfumAsistani")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ParfumAsistani")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
