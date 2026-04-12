@@ -45,8 +45,22 @@ Proje, öneri motoru olarak gelişmiş Gemini dil modelini kullanır.
    ```bash
    git clone [https://github.com/sudemhosek/ParfumAsistani.git](https://github.com/sudemhosek/ParfumAsistani.git)
    ```
+   2. Yapılandırma Dosyasını Oluşturun 
+Güvenlik nedeniyle appsettings.json dosyası repoya dahil edilmemiştir. Ana dizinde appsettings.json adında bir dosya oluşturun ve aşağıdaki şablonu içine yapıştırın:
+```bash
+JSON
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=ParfumDb;Trusted_Connection=True;"
+  },
+  "Gemini": {
+    "ApiKey": "BURAYA_GEMINI_API_ANAHTARINIZI_YAZIN"
+  }
+}
+```
+Not: Gemini API anahtarınızı Google AI Studio üzerinden ücretsiz olarak alabilirsiniz.
 
-2. **Veritabanını Güncelleyin:**
+3. **Veritabanını Güncelleyin:**
    `appsettings.json` içindeki bağlantı dizesini düzenleyin ve Migration'ları uygulayın:
    ```bash
    dotnet ef database update
