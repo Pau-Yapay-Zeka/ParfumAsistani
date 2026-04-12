@@ -6,7 +6,7 @@
 ![Tailwind](https://img.shields.io/badge/Tailwind-CSS%20CLI-38B2AC)
 ![AI](https://img.shields.io/badge/AI-Gemini%20Pro%20API-red)
 
-Parfüm Asistanı, kullanıcıların kişisel tercihlerine, yaşlarına ve koku zevklerine göre en uygun parfümleri yapay zeka desteğiyle analiz eden ve öneren modern bir web uygulamasıdır.
+Parfüm Asistanı, kullanıcıların kişisel tercihlerine, yaşlarına ve koku zevklerine göre en uygun parfümleri yapay zeka desteğiyle analiz eden ve 3 parfüm önerisinde bulunan modern bir web uygulamasıdır.
 
 ## 🚀 Proje Özeti
 Bu proje, karmaşık koku notalarını ve kullanıcı profillerini birleştirerek kişiselleştirilmiş bir kullanıcı deneyimi sunar. Kullanıcılar, etkileşimli 3D kartlar aracılığıyla koku notalarını keşfedebilir ve yapay zeka motorumuzdan saniyeler içinde nokta atışı tavsiyeler alabilirler.
