@@ -45,7 +45,7 @@ Proje, öneri motoru olarak gelişmiş Gemini dil modelini kullanır.
    ```bash
    git clone [https://github.com/sudemhosek/ParfumAsistani.git](https://github.com/sudemhosek/ParfumAsistani.git)
    ```
-   2. Yapılandırma Dosyasını Oluşturun 
+2. Yapılandırma Dosyasını Oluşturun 
 Güvenlik nedeniyle appsettings.json dosyası repoya dahil edilmemiştir. Ana dizinde appsettings.json adında bir dosya oluşturun ve aşağıdaki şablonu içine yapıştırın:
 ```bash
 JSON
