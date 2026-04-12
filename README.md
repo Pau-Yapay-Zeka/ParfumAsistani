@@ -25,7 +25,7 @@ Proje, **Kavramların Ayrılığı (Separation of Concerns)** prensibine uygun o
 
 ## 🧠 Yapay Zeka Entegrasyonu
 Proje, öneri motoru olarak gelişmiş Gemini dil modelini kullanır. 
-* **Süreç:** Kullanıcı verileri (yaş, cinsiyet, favori notalar) JSON formatında AI servisine iletilir.
+* **Süreç:** Kullanıcı verileri (yaş, cinsiyet, favori notalar ve favori parfümler) JSON formatında AI servisine iletilir.
 * **Analiz:** AI, binlerce parfüm kombinasyonunu tarayarak en uyumlu 3 sonucu yapılandırılmış veri olarak döndürür.
 * **Çıktı Kontrolü:** Gelen yanıtlar, `SafeParseAPIResponse` metodolojisi ile parse edilerek hatalı veya eksik veri oluşumu engellenir.
 
@@ -61,3 +61,18 @@ Proje, öneri motoru olarak gelişmiş Gemini dil modelini kullanır.
    ```bash
    dotnet run
    ```
+
+   <img width="1870" height="898" alt="image" src="https://github.com/user-attachments/assets/0318d027-0c6e-4919-b88c-8ba6df7206ee" />
+   <img width="1030" height="909" alt="image" src="https://github.com/user-attachments/assets/b843b134-3581-4203-9c6a-b9ffb08fefaa" />
+   <img width="1004" height="925" alt="image" src="https://github.com/user-attachments/assets/cc33cd12-78d1-4ec1-93a6-9405287db0bc" />
+   <img width="1690" height="903" alt="image" src="https://github.com/user-attachments/assets/b5ed4168-d82f-4520-9bd4-30c2c9ae22b6" />
+   <img width="1412" height="910" alt="image" src="https://github.com/user-attachments/assets/7873d023-900c-430c-979c-068c205643af" />
+   <img width="1366" height="904" alt="image" src="https://github.com/user-attachments/assets/174a4f29-1608-4ece-90c0-4df29fca0d0a" />
+   <img width="1742" height="915" alt="image" src="https://github.com/user-attachments/assets/c341882f-23a8-4912-a714-81d6bcb038a9" />
+
+
+
+
+
+
+
