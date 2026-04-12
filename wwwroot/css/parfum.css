@@ -1,0 +1,80 @@
+
+        body { 
+            background: linear-gradient(135deg, #fdf2f8 0%, #f1f5f9 100%); 
+            min-height: 100vh;
+            color: #0f172a; 
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+        }
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus, 
+        input:-webkit-autofill:active{
+            -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
+            -webkit-text-fill-color: #0f172a !important;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+
+        /* 3D DÖNEN KART (FLIP CARD) STİLLERİ - DÜZELTİLDİ */
+        .flip-card-container { 
+            perspective: 1000px; 
+            cursor: pointer; 
+            height: 210px; /* Kartların üst üste binmesini engelleyen sabit yükseklik */
+        }
+        .flip-card-inner { 
+            position: relative; 
+            width: 100%; 
+            height: 100%; 
+            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1); 
+            transform-style: preserve-3d; 
+        }
+        .flip-card-container:hover .flip-card-inner { 
+            transform: rotateY(180deg); 
+        }
+        .backface-hidden { 
+            backface-visibility: hidden; 
+            -webkit-backface-visibility: hidden; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+        }
+
+        /* Kart Seçildiğinde Çerçeve Efekti */
+        .flip-card-container.selected .flip-card-front, 
+        .flip-card-container.selected .flip-card-back { 
+            border-color: #dc2626 !important; 
+            background-color: rgba(220, 38, 38, 0.04) !important;
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15) !important; 
+        }
+
+        .btn-zarif-primary {
+            background: linear-gradient(to right, #dc2626, #ef4444); 
+            color: white; border-radius: 1rem; padding: 0.75rem 1.75rem; font-weight: 500; transition: all 0.3s;
+            border: none;
+        }
+        .btn-zarif-primary:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 10px 20px -10px rgba(220, 38, 38, 0.6); 
+        }
+        
+        .btn-zarif-secondary {
+            background-color: white; color: #475569; border: 1px solid #cbd5e1; border-radius: 1rem; padding: 0.75rem 1.75rem; font-weight: 500; transition: all 0.3s;
+        }
+        .btn-zarif-secondary:hover { background-color: #f8fafc; color: #0f172a; border-color: #94a3b8; }
+
+        .loader-ring {
+            width: 80px; height: 80px; border-radius: 50%;
+            border: 4px solid rgba(220, 38, 38, 0.1);
+            border-top-color: #dc2626;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
