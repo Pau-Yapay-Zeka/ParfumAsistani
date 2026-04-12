@@ -25,7 +25,7 @@ Proje, **Kavramların Ayrılığı (Separation of Concerns)** prensibine uygun o
 
 ## 🧠 Yapay Zeka Entegrasyonu
 Proje, öneri motoru olarak gelişmiş Gemini dil modelini kullanır. 
-* **Süreç:** Kullanıcı verileri (yaş, cinsiyet, favori notalar) JSON formatında AI servisine iletilir.
+* **Süreç:** Kullanıcı verileri (yaş, cinsiyet, favori notalar ve favori parfümler) JSON formatında AI servisine iletilir.
 * **Analiz:** AI, binlerce parfüm kombinasyonunu tarayarak en uyumlu 3 sonucu yapılandırılmış veri olarak döndürür.
 * **Çıktı Kontrolü:** Gelen yanıtlar, `SafeParseAPIResponse` metodolojisi ile parse edilerek hatalı veya eksik veri oluşumu engellenir.
 
@@ -61,3 +61,21 @@ Proje, öneri motoru olarak gelişmiş Gemini dil modelini kullanır.
    ```bash
    dotnet run
    ```
+## 🎨 Modern Arayüz ve Kullanıcı Deneyimi
+Parfüm Asistanı, kullanıcıları sıradan filtreleme ekranlarından kurtarıp onlara adım adım rehberlik eden interaktif bir deneyim sunar. Süreç; kullanıcının ismini, yaşını ve temel koku tercihini sisteme girmesiyle başlar. Ardından, parfüm dünyasına ve notalara yabancı olan kullanıcılar düşünülerek özel olarak tasarlanmış 3D dönebilen bilgilendirme kartları ile nota seçimi ekranına geçilir. Dileyen kullanıcılar, yapay zekanın tarzlarını daha iyi analiz edebilmesi için daha önce kullandıkları favori bir parfümü de sisteme ekleyebilirler.
+
+Tüm bu veriler işlendikten sonra sistem, kullanıcıya özel olarak seçilmiş 3 farklı parfüm önerisini, bu seçimleri neden yaptığını açıklayan detaylı sebepleriyle birlikte sunar. Eğer önerilen bir parfüm kullanıcının ilgisini çekmezse, kartın üzerindeki çarpı işaretine tıklaması yeterlidir; sistem reddedilen seçeneği anında yepyeni bir alternatifle değiştirir. Aranan o mükemmel koku bulunduğunda ise, satın alma işlemini kolaylaştırmak için doğrudan Google Alışveriş merkezine yönlendirme yapılır ve güvenli bir satın alma deneyimi sağlanır.
+
+<img width="1870" height="898" alt="image" src="https://github.com/user-attachments/assets/0318d027-0c6e-4919-b88c-8ba6df7206ee" />
+<img width="1030" height="909" alt="image" src="https://github.com/user-attachments/assets/b843b134-3581-4203-9c6a-b9ffb08fefaa" />
+<img width="1004" height="925" alt="image" src="https://github.com/user-attachments/assets/cc33cd12-78d1-4ec1-93a6-9405287db0bc" />
+<img width="1690" height="903" alt="image" src="https://github.com/user-attachments/assets/b5ed4168-d82f-4520-9bd4-30c2c9ae22b6" />
+<img width="1412" height="910" alt="image" src="https://github.com/user-attachments/assets/7873d023-900c-430c-979c-068c205643af" />
+<img width="1366" height="904" alt="image" src="https://github.com/user-attachments/assets/174a4f29-1608-4ece-90c0-4df29fca0d0a" />
+<img width="1742" height="915" alt="image" src="https://github.com/user-attachments/assets/c341882f-23a8-4912-a714-81d6bcb038a9" />
+
+
+
+
+
+
