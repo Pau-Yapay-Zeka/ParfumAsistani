@@ -65,13 +65,22 @@ Not: Gemini API anahtarınızı Google AI Studio üzerinden ücretsiz olarak ala
    ```bash
    dotnet ef database update
    ```
+   4. Örnek Verileri Yükleyin:
+Tablolar oluştuktan sonra, uygulamanın boş görünmemesi için SQL Server'ı (veya kullandığınız veritabanı aracını) açın ve aşağıdaki örnek verileri Notalar tablosuna çalıştırın (Execute):
+ ```bash
+   INSERT INTO Notalar (Ad, Aciklama) VALUES 
+('Bergamot', 'Ferah ve enerjik narenciye notası.'),
+('Vanilya', 'Sıcak ve tatlı dip nota.'),
+('Sandal Ağacı', 'Odunsu ve zengin temel nota.'),
+('Gül', 'Zarif ve klasik çiçeksi nota.');
+   ```
 
-3. **Tailwind CSS'i Derleyin:**
+5. **Tailwind CSS'i Derleyin:**
    ```bash
    npx tailwindcss -i ./wwwroot/css/input.css -o ./wwwroot/css/tailwind.css --watch
    ```
 
-4. **Uygulamayı Çalıştırın:**
+6. **Uygulamayı Çalıştırın:**
    ```bash
    dotnet run
    ```
