@@ -68,11 +68,13 @@ Not: Gemini API anahtarınızı Google AI Studio üzerinden ücretsiz olarak ala
 4. Örnek Verileri Yükleyin:
 Tablolar oluştuktan sonra, uygulamanın boş görünmemesi için SQL Server'ı (veya kullandığınız veritabanı aracını) açın ve aşağıdaki örnek verileri Notalar tablosuna çalıştırın (Execute):
  ```bash
-   INSERT INTO Notalar (Ad, Aciklama) VALUES 
-('Bergamot', 'Ferah ve enerjik narenciye notası.'),
-('Vanilya', 'Sıcak ve tatlı dip nota.'),
-('Sandal Ağacı', 'Odunsu ve zengin temel nota.'),
-('Gül', 'Zarif ve klasik çiçeksi nota.');
+ INSERT INTO Notalar (Ad, GorselUrl, Aciklama) VALUES 
+('Vanilya', 'https://royalmond.com/wp-content/uploads/Vanilla-06-1000x675.jpg', 'Sıcak, tatlı ve rahatlatıcı klasik bir gurme lezzeti.'),
+('Gül', 'https://www.zengardentr.com/shop/ir/87/myassets/products/497/kirmizi-yerli-gul-fidani-1.jpg?revision=1770117976', 'Romantizmin, tutkunun ve zarafetin pudralı, zamansız kokusu.'),
+('Karamel', 'https://imgrosetta.mynet.com.tr/file/12201709/12201709-860x480.jpg', 'Gourmand kokuların yanık şekerli, baştan çıkarıcı notası.'),
+('Bergamot', 'https://www.kendiparfumunuyap.com/wp-content/uploads/2024/06/Bergamot-Akoru-Bergamot-Kokusu.webp', 'Earl Grey çayına da kokusunu veren, taze ve hafif narenciye dokunuşu.'),
+('Sandal Ağacı', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnl_gQPyzxfJ7Slms3KTx-evkVfgbe1VhviQ&s', 'Kremsi, yumuşak, ruhani ve sütlü bir odunsu doku.'),
+('Lavanta', 'https://cdn.karaca.com/cms/lavanta_1_9b004fc0fd.jpg', 'Temiz, aromatik, sabunsu ve sakinleştirici bir ferahlık.');
    ```
 
 5. **Tailwind CSS'i Derleyin:**
