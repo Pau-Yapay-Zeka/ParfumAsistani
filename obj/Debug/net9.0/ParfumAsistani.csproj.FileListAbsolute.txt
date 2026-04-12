@@ -172,4 +172,5 @@ C:\Users\merye\ParfumAsistani\bin\Debug\net9.0\package-lock.json
 C:\Users\merye\ParfumAsistani\bin\Debug\net9.0\package.json
 C:\Users\merye\ParfumAsistani\obj\Debug\net9.0\compressed\7eqtjozkxa-7and8guzmx.gz
 C:\Users\merye\ParfumAsistani\obj\Debug\net9.0\compressed\nywa4firo9-9y48b3is8q.gz
-C:\Users\merye\ParfumAsistani\obj\Debug\net9.0\compressed\ia24oedq4k-qdefzziaqx.gz
+C:\Users\merye\ParfumAsistani\obj\Debug\net9.0\ParfumAsistani.sourcelink.json
+C:\Users\merye\ParfumAsistani\obj\Debug\net9.0\compressed\ia24oedq4k-z1tlq14snr.gz
