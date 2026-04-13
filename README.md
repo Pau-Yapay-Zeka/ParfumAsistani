@@ -45,7 +45,13 @@ Proje, öneri motoru olarak gelişmiş Gemini dil modelini kullanır.
    ```bash
    git clone [https://github.com/sudemhosek/ParfumAsistani.git](https://github.com/sudemhosek/ParfumAsistani.git)
    ```
-2. Yapılandırma Dosyasını Oluşturun 
+2. Bağımlılıkları (Paketleri) Yükleyin:
+Projeyi klonladıktan sonra, C# ve Tailwind CSS için gerekli olan paketleri indirin:
+ ```bash
+  dotnet restore
+   npm install
+   ```
+3. Yapılandırma Dosyasını Oluşturun 
 Güvenlik nedeniyle appsettings.json dosyası repoya dahil edilmemiştir. Ana dizinde appsettings.json adında bir dosya oluşturun ve aşağıdaki şablonu içine yapıştırın:
 ```bash
 JSON
@@ -60,29 +66,50 @@ JSON
 ```
 Not: Gemini API anahtarınızı Google AI Studio üzerinden ücretsiz olarak alabilirsiniz.
 
-3. **Veritabanını Güncelleyin:**
+4. **Veritabanını Güncelleyin:**
    `appsettings.json` içindeki bağlantı dizesini düzenleyin ve Migration'ları uygulayın:
    ```bash
    dotnet ef database update
    ```
-4. Örnek Verileri Yükleyin:
-Tablolar oluştuktan sonra, uygulamanın boş görünmemesi için SQL Server'ı (veya kullandığınız veritabanı aracını) açın ve aşağıdaki örnek verileri Notalar tablosuna çalıştırın (Execute):
+5. Örnek Verileri Yükleyin:
+Tablolar oluştuktan sonra, arayüzdeki 3D nota kartlarının ve arama motorunun boş görünmemesi için SQL Server'ı açın ve aşağıdaki örnek verileri çalıştırın (Execute):
  ```bash
- INSERT INTO Notalar (Ad, GorselUrl, Aciklama) VALUES 
+-- Notalar Tablosu İçin Örnek Veriler
+INSERT INTO Notalar (Ad, GorselUrl, Aciklama) VALUES 
 ('Vanilya', 'https://royalmond.com/wp-content/uploads/Vanilla-06-1000x675.jpg', 'Sıcak, tatlı ve rahatlatıcı klasik bir gurme lezzeti.'),
 ('Gül', 'https://www.zengardentr.com/shop/ir/87/myassets/products/497/kirmizi-yerli-gul-fidani-1.jpg?revision=1770117976', 'Romantizmin, tutkunun ve zarafetin pudralı, zamansız kokusu.'),
 ('Karamel', 'https://imgrosetta.mynet.com.tr/file/12201709/12201709-860x480.jpg', 'Gourmand kokuların yanık şekerli, baştan çıkarıcı notası.'),
 ('Bergamot', 'https://www.kendiparfumunuyap.com/wp-content/uploads/2024/06/Bergamot-Akoru-Bergamot-Kokusu.webp', 'Earl Grey çayına da kokusunu veren, taze ve hafif narenciye dokunuşu.'),
 ('Sandal Ağacı', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnl_gQPyzxfJ7Slms3KTx-evkVfgbe1VhviQ&s', 'Kremsi, yumuşak, ruhani ve sütlü bir odunsu doku.'),
 ('Lavanta', 'https://cdn.karaca.com/cms/lavanta_1_9b004fc0fd.jpg', 'Temiz, aromatik, sabunsu ve sakinleştirici bir ferahlık.');
-   ```
 
-5. **Tailwind CSS'i Derleyin:**
+-- Parfumler Tablosu İçin Örnek Veriler (Arama Motoru Testi İçin)
+INSERT INTO Parfumler (Ad, Marka) VALUES 
+('Goddess', 'Burberry'),
+('Chanel No. 5', 'Chanel'),
+('Coco Mademoiselle', 'Chanel'),
+('Chance Eau Tendre', 'Chanel'),
+('Black Opium', 'Yves Saint Laurent'),
+('Libre', 'Yves Saint Laurent'),
+('J''adore', 'Dior'),
+('Miss Dior', 'Dior'),
+('Hypnotic Poison', 'Dior'),
+('La Vie Est Belle', 'Lancôme'),
+('Idôle', 'Lancôme'),
+('Alien', 'Mugler'),
+('Angel', 'Mugler'),
+('Sauvage', 'Dior'),
+('Bleu de Chanel', 'Chanel'),
+('Aventus', 'Creed');
+   ```
+💡 Bilgi: Projenin orijinal veritabanında arama deneyimini zenginleştirmek için en çok tercih edilen 100 kadın ve 100 erkek parfümü bulunmaktadır. Yukarıdaki veriler, uygulamanın arama motorunu test edebilmeniz için eklenmiş kısa bir listedir.
+
+6. **Tailwind CSS'i Derleyin:**
    ```bash
    npx tailwindcss -i ./wwwroot/css/input.css -o ./wwwroot/css/tailwind.css --watch
    ```
 
-6. **Uygulamayı Çalıştırın:**
+7. **Uygulamayı Çalıştırın:**
    ```bash
    dotnet run
    ```
