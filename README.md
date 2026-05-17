@@ -41,75 +41,132 @@ Proje, öneri motoru olarak gelişmiş Gemini dil modelini kullanır.
 
 ## 📝 Kurulum ve Kullanım
 
+## 📝 Kurulum ve Kullanım
+
 1. **Repoyu Klonlayın:**
+
    ```bash
-   git clone [https://github.com/sudemhosek/ParfumAsistani.git](https://github.com/sudemhosek/ParfumAsistani.git)
+   git clone https://github.com/Pau-Yapay-Zeka/ParfumAsistani.git
+   cd ParfumAsistani
    ```
-2. Bağımlılıkları (Paketleri) Yükleyin:
-Projeyi klonladıktan sonra, C# ve Tailwind CSS için gerekli olan paketleri indirin:
- ```bash
-  dotnet restore
+
+2. **Bağımlılıkları (Paketleri) Yükleyin:**
+
+   Projeyi klonladıktan sonra C# ve Tailwind CSS için gerekli olan paketleri indirin:
+
+   ```bash
+   dotnet restore
    npm install
    ```
-3. Yapılandırma Dosyasını Oluşturun 
-Güvenlik nedeniyle appsettings.json dosyası repoya dahil edilmemiştir. Ana dizinde appsettings.json adında bir dosya oluşturun ve aşağıdaki şablonu içine yapıştırın:
-```bash
-JSON
-{
-  "ConnectionStrings": {
-    "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=ParfumDb;Trusted_Connection=True;"
-  },
-  "Gemini": {
-    "ApiKey": "BURAYA_GEMINI_API_ANAHTARINIZI_YAZIN"
-  }
-}
-```
-Not: Gemini API anahtarınızı Google AI Studio üzerinden ücretsiz olarak alabilirsiniz.
 
-4. **Veritabanını Güncelleyin:**
+   > **Not:** Projeyi SQLite ile çalıştırmak istiyorsanız aşağıdaki paketin yüklü olduğundan emin olun:
+   >
+   > ```bash
+   > dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+   > ```
+
+3. **Yapılandırma Dosyasını Oluşturun:**
+
+   Güvenlik nedeniyle `appsettings.json` dosyası repoya dahil edilmemiştir. Ana dizinde `appsettings.json` adında bir dosya oluşturun ve aşağıdaki şablonu içine yapıştırın:
+
+   ```json
+   {
+     "ConnectionStrings": {
+       "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=ParfumDb;Trusted_Connection=True;"
+     },
+     "Gemini": {
+       "ApiKey": "BURAYA_GEMINI_API_ANAHTARINIZI_YAZIN"
+     }
+   }
+   ```
+
+   > **Not:** SQLite kullanacaksanız `DefaultConnection` alanını aşağıdaki gibi değiştirin:
+   >
+   > ```json
+   > "DefaultConnection": "Data Source=parfum_asistani.db"
+   > ```
+
+   > **Not:** Gemini API anahtarınızı Google AI Studio üzerinden ücretsiz olarak alabilirsiniz.
+
+4. **Veritabanı Sağlayıcısını Kontrol Edin:**
+
+   Projede varsayılan olarak SQL Server kullanılmaktadır. Eğer SQLite kullanacaksanız `Program.cs` dosyasında veritabanı sağlayıcısını SQLite olarak güncellemeniz gerekir.
+
+   SQL Server kullanımı:
+
+   ```csharp
+   builder.Services.AddDbContext<AppDbContext>(options =>
+       options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+   ```
+
+   SQLite kullanımı:
+
+   ```csharp
+   builder.Services.AddDbContext<AppDbContext>(options =>
+       options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+   ```
+
+5. **Veritabanını Güncelleyin:**
+
    `appsettings.json` içindeki bağlantı dizesini düzenleyin ve Migration'ları uygulayın:
+
    ```bash
    dotnet ef database update
    ```
-5. Örnek Verileri Yükleyin:
-Tablolar oluştuktan sonra, arayüzdeki 3D nota kartlarının ve arama motorunun boş görünmemesi için SQL Server'ı açın ve aşağıdaki örnek verileri çalıştırın (Execute):
- ```bash
--- Notalar Tablosu İçin Örnek Veriler
-INSERT INTO Notalar (Ad, GorselUrl, Aciklama) VALUES 
-('Vanilya', 'https://royalmond.com/wp-content/uploads/Vanilla-06-1000x675.jpg', 'Sıcak, tatlı ve rahatlatıcı klasik bir gurme lezzeti.'),
-('Gül', 'https://www.zengardentr.com/shop/ir/87/myassets/products/497/kirmizi-yerli-gul-fidani-1.jpg?revision=1770117976', 'Romantizmin, tutkunun ve zarafetin pudralı, zamansız kokusu.'),
-('Karamel', 'https://imgrosetta.mynet.com.tr/file/12201709/12201709-860x480.jpg', 'Gourmand kokuların yanık şekerli, baştan çıkarıcı notası.'),
-('Bergamot', 'https://www.kendiparfumunuyap.com/wp-content/uploads/2024/06/Bergamot-Akoru-Bergamot-Kokusu.webp', 'Earl Grey çayına da kokusunu veren, taze ve hafif narenciye dokunuşu.'),
-('Sandal Ağacı', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnl_gQPyzxfJ7Slms3KTx-evkVfgbe1VhviQ&s', 'Kremsi, yumuşak, ruhani ve sütlü bir odunsu doku.'),
-('Lavanta', 'https://cdn.karaca.com/cms/lavanta_1_9b004fc0fd.jpg', 'Temiz, aromatik, sabunsu ve sakinleştirici bir ferahlık.');
 
--- Parfumler Tablosu İçin Örnek Veriler (Arama Motoru Testi İçin)
-INSERT INTO Parfumler (Ad, Marka) VALUES 
-('Goddess', 'Burberry'),
-('Chanel No. 5', 'Chanel'),
-('Coco Mademoiselle', 'Chanel'),
-('Chance Eau Tendre', 'Chanel'),
-('Black Opium', 'Yves Saint Laurent'),
-('Libre', 'Yves Saint Laurent'),
-('J''adore', 'Dior'),
-('Miss Dior', 'Dior'),
-('Hypnotic Poison', 'Dior'),
-('La Vie Est Belle', 'Lancôme'),
-('Idôle', 'Lancôme'),
-('Alien', 'Mugler'),
-('Angel', 'Mugler'),
-('Sauvage', 'Dior'),
-('Bleu de Chanel', 'Chanel'),
-('Aventus', 'Creed');
+   > **Not:** Daha önce SQL Server için migration oluşturulduysa ve SQLite’a geçiş yapıyorsanız eski migration dosyalarını silip yeniden migration oluşturmanız önerilir:
+   >
+   > ```bash
+   > dotnet ef migrations add InitialCreate
+   > dotnet ef database update
+   > ```
+
+6. **Örnek Verileri Yükleyin:**
+
+   Tablolar oluştuktan sonra, arayüzdeki 3D nota kartlarının ve arama motorunun boş görünmemesi için veritabanına aşağıdaki örnek verileri ekleyin.
+
+   > **Not:** SQL Server kullanıyorsanız bu sorguları SQL Server Management Studio üzerinden çalıştırabilirsiniz. SQLite kullanıyorsanız aynı sorguları SQLite veritabanı üzerinde çalıştırabilirsiniz.
+
+   ```sql
+   -- Notalar Tablosu İçin Örnek Veriler
+   INSERT INTO Notalar (Ad, GorselUrl, Aciklama) VALUES 
+   ('Vanilya', 'https://royalmond.com/wp-content/uploads/Vanilla-06-1000x675.jpg', 'Sıcak, tatlı ve rahatlatıcı klasik bir gurme lezzeti.'),
+   ('Gül', 'https://www.zengardentr.com/shop/ir/87/myassets/products/497/kirmizi-yerli-gul-fidani-1.jpg?revision=1770117976', 'Romantizmin, tutkunun ve zarafetin pudralı, zamansız kokusu.'),
+   ('Karamel', 'https://imgrosetta.mynet.com.tr/file/12201709/12201709-860x480.jpg', 'Gourmand kokuların yanık şekerli, baştan çıkarıcı notası.'),
+   ('Bergamot', 'https://www.kendiparfumunuyap.com/wp-content/uploads/2024/06/Bergamot-Akoru-Bergamot-Kokusu.webp', 'Earl Grey çayına da kokusunu veren, taze ve hafif narenciye dokunuşu.'),
+   ('Sandal Ağacı', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnl_gQPyzxfJ7Slms3KTx-evkVfgbe1VhviQ&s', 'Kremsi, yumuşak, ruhani ve sütlü bir odunsu doku.'),
+   ('Lavanta', 'https://cdn.karaca.com/cms/lavanta_1_9b004fc0fd.jpg', 'Temiz, aromatik, sabunsu ve sakinleştirici bir ferahlık.');
+
+   -- Parfumler Tablosu İçin Örnek Veriler
+   INSERT INTO Parfumler (Ad, Marka) VALUES 
+   ('Goddess', 'Burberry'),
+   ('Chanel No. 5', 'Chanel'),
+   ('Coco Mademoiselle', 'Chanel'),
+   ('Chance Eau Tendre', 'Chanel'),
+   ('Black Opium', 'Yves Saint Laurent'),
+   ('Libre', 'Yves Saint Laurent'),
+   ('J''adore', 'Dior'),
+   ('Miss Dior', 'Dior'),
+   ('Hypnotic Poison', 'Dior'),
+   ('La Vie Est Belle', 'Lancôme'),
+   ('Idôle', 'Lancôme'),
+   ('Alien', 'Mugler'),
+   ('Angel', 'Mugler'),
+   ('Sauvage', 'Dior'),
+   ('Bleu de Chanel', 'Chanel'),
+   ('Aventus', 'Creed');
    ```
-💡 Bilgi: Projenin orijinal veritabanında arama deneyimini zenginleştirmek için en çok tercih edilen 100 kadın ve 100 erkek parfümü bulunmaktadır. Yukarıdaki veriler, uygulamanın arama motorunu test edebilmeniz için eklenmiş kısa bir listedir.
 
-6. **Tailwind CSS'i Derleyin:**
+   💡 **Bilgi:** Projenin orijinal veritabanında arama deneyimini zenginleştirmek için en çok tercih edilen 100 kadın ve 100 erkek parfümü bulunmaktadır. Yukarıdaki veriler, uygulamanın arama motorunu test edebilmeniz için eklenmiş kısa bir listedir.
+
+7. **Tailwind CSS'i Derleyin:**
+
    ```bash
    npx tailwindcss -i ./wwwroot/css/input.css -o ./wwwroot/css/tailwind.css --watch
    ```
 
-7. **Uygulamayı Çalıştırın:**
+8. **Uygulamayı Çalıştırın:**
+
    ```bash
    dotnet run
    ```
