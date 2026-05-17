@@ -41,8 +41,6 @@ Proje, öneri motoru olarak gelişmiş Gemini dil modelini kullanır.
 
 ## 📝 Kurulum ve Kullanım
 
-## 📝 Kurulum ve Kullanım
-
 1. **Repoyu Klonlayın:**
 
    ```bash
