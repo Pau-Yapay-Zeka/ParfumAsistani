@@ -1,0 +1,6 @@
+./appsettings.json
+.gitignore
+bin/
+obj/
+node_modules/
+*.db

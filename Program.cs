@@ -1,12 +1,24 @@
+using System.IO;
 using Microsoft.EntityFrameworkCore;
 using ParfumAsistani.Data;
 using ParfumAsistani.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 1. Veritabanı bağlantımızı (SQL Server) projeye tanıtıyoruz
+// 1. Veritabanı bağlantımızı projeye tanıtıyoruz (SQL Server veya SQLite fallback)
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+{
+    if (!string.IsNullOrEmpty(connectionString))
+    {
+        options.UseSqlServer(connectionString);
+    }
+    else
+    {
+        var dbPath = Path.Combine(builder.Environment.ContentRootPath, "parfum.db");
+        options.UseSqlite($"Data Source={dbPath}");
+    }
+});
 
 // 2. API Controller'larımızı aktifleştiriyoruz
 builder.Services.AddControllers();
@@ -18,6 +30,12 @@ builder.Services.AddHttpClient();
 builder.Services.AddScoped<ParfumAsistani.Services.IAiService, ParfumAsistani.Services.GeminiService>();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    DbInitializer.Seed(context);
+}
 
 // 4. Geliştirici ortamındaysak Swagger arayüzünü aç
 if (app.Environment.IsDevelopment())
